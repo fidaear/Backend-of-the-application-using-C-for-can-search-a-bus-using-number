@@ -1,0 +1,101 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+typedef struct trajet {
+	int IDt;
+	char trajde[20];
+	char trajfi[20];
+	float prix;
+	int nubus;
+}trajet;
+
+main()
+{
+	trajet tr;
+	FILE *F;
+	char rep,Coper[30];
+	int K,z,i,N;
+	F=fopen("pfo.txt","a");
+	printf("****************ENTRER VOTRER CHOIX****************\n");
+	printf("                     1-ajouter vos donner \n                     2-afficher vos donne\n                     3-choisir votre distination\n");
+	printf("--------------------------------------------------------------------------------------------------------------------\n");
+	printf("\t\t\t\t\t\t entrer votre choix:");
+	scanf("%d",&N);
+	if(N==1){
+		do{
+		printf("entrer identifiant de trajet : ");
+		scanf("%d",&tr.IDt);
+		fprintf(F,"\n %d \n ",tr.IDt);
+		printf("entrer le trajet de debut de bus : ");
+		scanf("%s",tr.trajde);
+		fprintf(F,"\n  %s \n ",tr.trajde);
+		printf("entrer le trajet de fin de bus : ");
+		scanf("%s",&tr.trajfi);
+		fprintf(F," %s \n ",tr.trajfi);
+		printf("entrer le prix:");
+		scanf("%f",&tr.prix);
+		fprintf(F,"%2.f ",tr.prix);
+		printf("entrer le numero de bus : ");
+	    scanf("%d",&tr.nubus);
+	    fprintf(F,"%d",tr.nubus);
+	    fflush(stdin);//pour librer la memoire
+		printf("si voulez vous ajouter une valeur cliquer (o): ");
+	    scanf("%s",&rep);}
+		while(rep=='o');
+	}
+	else if(N==2){
+		F=fopen("pfo.txt","r");
+		do{
+			fscanf(F,"%d \n",&tr.IDt);
+			fflush(stdin);
+			printf(" numero de ligne :%d \n ",tr.IDt);
+			fscanf(F," %s\n",&tr.trajde);
+			fflush(stdin);
+			printf(" la station de debut:%s \n ",tr.trajde);
+			fscanf(F,"%s \n",&tr.trajfi);
+			fflush(stdin);
+			printf(" la station finale:%s \n ",tr.trajfi);
+			fscanf(F,"%f\n",&tr.prix);
+			fflush(stdin);
+			printf("le prix de la ligne: %f\n ",tr.prix);
+			fscanf(F,"%d \n",&tr.nubus);
+			fflush(stdin);
+			printf("le numero de bus est: %d \n",tr.nubus);
+		}while(!feof(F));
+		fclose(F);
+	}
+		else if(N==3){
+    //just creat a file of type txt 
+		F=fopen("pfo.txt","r");
+		do{
+			fscanf(F,"%d \n",&tr.IDt);
+			fflush(stdin);
+			printf(" numero de ligne :%d \n ",tr.IDt);
+			fscanf(F," %s\n",&tr.trajde);
+			fflush(stdin);
+			printf(" la station de debut:%s \n ",tr.trajde);
+			fscanf(F,"%s \n",&tr.trajfi);
+			fflush(stdin);
+			printf(" la station finale:%s \n ",tr.trajfi);
+			fscanf(F,"%f\n",&tr.prix);
+			fflush(stdin);
+			printf("le prix de la ligne: %f\n ",tr.prix);
+			fscanf(F,"%d \n",&tr.nubus);
+			fflush(stdin);
+			printf("le numero de bus est: %d \n",tr.nubus);
+		}while(!feof(F));
+		printf("copier votre sistination monsieur:");
+		scanf("%s",&Coper[30]);
+		F=fopen("pfo.txt","r");
+		do{
+			fscanf(F,"%s\n",&tr.trajfi);
+			
+				if(strcmp(tr.trajfi,Coper)==1){
+			      printf(" numero de ligne :%d \n ",tr.IDt);
+			      printf("le prix de la ligne: %f\n ",tr.prix);
+			      printf("le numero de bus sur la ligne est: %d \n",tr.nubus);
+			      printf("la station de vos : %s",tr.trajde);
+				}
+				}while(feof(F));
+		fclose(F);
+	}}//Fidae ARIYAN
